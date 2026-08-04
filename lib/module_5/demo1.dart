@@ -13,26 +13,25 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
       home: const Home(),
     );
   }
 }
+
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: PasswordWidget(),
-    );
+    return Scaffold(body: PasswordWidget(label: "Password"));
   }
 }
 
 class PasswordWidget extends StatefulWidget {
-  const PasswordWidget({super.key});
+  String label;
+
+  PasswordWidget({super.key, required this.label});
 
   @override
   State<PasswordWidget> createState() => _PasswordWidgetState();
@@ -51,33 +50,26 @@ class _PasswordWidgetState extends State<PasswordWidget> {
           TextField(
             obscureText: !isVisible,
             decoration: InputDecoration(
-                labelText: "Mot de passe",
-              border: OutlineInputBorder()
+              labelText: widget.label,
+              border: OutlineInputBorder(),
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(isVisible ? Icons.lock_open : Icons.lock),
-              Switch(value: isVisible, onChanged: (value){
-                setState(() {
-                  isVisible = value;
-                });
-
-              })
+              Switch(
+                value: isVisible,
+                onChanged: (value) {
+                  setState(() {
+                    isVisible = value;
+                  });
+                },
+              ),
             ],
-          )
+          ),
         ],
       ),
     );
   }
 }
-
-
-
-
-
-
-
-
-
