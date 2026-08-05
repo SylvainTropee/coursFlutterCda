@@ -47,9 +47,9 @@ class DrinkList extends StatelessWidget {
         itemCount: drinks.length,
           itemBuilder: (context, index){
             return Container(
-              child: Text(drinks[index]),
               color: Colors.blue,
               height: 100,
+              child: Text(drinks[index]),
             );
           }
       ),

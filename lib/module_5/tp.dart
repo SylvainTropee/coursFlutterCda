@@ -45,7 +45,6 @@ class _ArticleListState extends State<ArticleList> {
     setState(() {
       totalPrice += itemPrice;
     });
-
   }
 
   @override
@@ -55,7 +54,7 @@ class _ArticleListState extends State<ArticleList> {
         ArticleItem(name: "Clavier", price: 12.5, updatePrice: updateTotalPrice),
         ArticleItem(name: "Carte graphique", price: 32,  updatePrice: updateTotalPrice),
         ArticleItem(name: "Casque de réalité diminué", price: 12.33, updatePrice: updateTotalPrice),
-        Text("Total commande = ${totalPrice}€")
+        Text("Total commande = $totalPrice€")
       ],
     );
   }
@@ -88,7 +87,7 @@ class _ArticleItemState extends State<ArticleItem> {
       if (quantity >= 1){
         quantity--;
         widget.updatePrice(-widget.price);
-      };
+      }
     });
   }
 
